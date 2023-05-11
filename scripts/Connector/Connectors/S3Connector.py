@@ -17,11 +17,9 @@ class S3Connector(BaseConnector):
 
         try:
             self.s3.upload_file(picture_path, self.destination_bucket, obj_name)
-            breakpoint()
         except Exception as e:
             print(f'Error: {e}')
 
     def build_connector(self) -> None:
         self.destination_bucket = 'supin-'+self.client
         self.s3 = boto3.client('s3')
-        breakpoint()
