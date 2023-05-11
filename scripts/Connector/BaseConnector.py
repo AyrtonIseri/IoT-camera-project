@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
 
 class BaseConnector():
-    def __init__(self):
+    def __init__(self, client):
+        self.client = client
         pass
 
     @abstractmethod

@@ -10,7 +10,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 
 from scripts.Connector.BaseConnector import BaseConnector
 
-CONFIG_PATH = '.config/.env'
+CONFIG_PATH = '.config/config.toml'
 
 class GDriveConnector(BaseConnector):
     def __init__(self):
@@ -23,6 +23,7 @@ class GDriveConnector(BaseConnector):
         #gets the drive parent directory id
         with open(CONFIG_PATH, mode = 'rb') as config_file:
             config = tomli.load(config_file)
+            breakpoint()
             folder_id = config['GoogleDrive']['folder_id']
 
         #builds the file metadata and media
@@ -51,7 +52,6 @@ class GDriveConnector(BaseConnector):
             #gets a brand new credential secret
             else:
                 flow = InstalledAppFlow.from_client_secrets_file(self.secret_file, self.scopes)
-                breakpoint()
                 self.creds = flow.run_local_server(port=0)
             #writes a new credential file
             with open(credential_file, 'w') as token:

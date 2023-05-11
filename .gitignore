@@ -1,4 +1,5 @@
-photo-queue/*
+photo-queue/*.png
 .env
 __pycache__
 client_secrets.json
+rootkey*
