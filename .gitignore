@@ -1,2 +1,4 @@
 photo-queue/*
-.ENV
+.env
+__pycache__
+client_secrets.json
