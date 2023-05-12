@@ -8,11 +8,12 @@ from scripts.Connector.BaseConnector import BaseConnector
 CONFIG_PATH = '.config/config.toml'
 
 class S3Connector(BaseConnector):
-    def __init__(self, client: str):
-        super().__init__(client)
+    def __init__(self):
+        super().__init__()
         self.build_connector()
         
-    def load_picture(self, picture_path: str):
+    def load_picture(self, picture_path: str, client: str):
+        self.destination_bucket = 'supin-'+client
         obj_name = os.path.basename(picture_path)
 
         try:
@@ -21,5 +22,4 @@ class S3Connector(BaseConnector):
             print(f'Error: {e}')
 
     def build_connector(self) -> None:
-        self.destination_bucket = 'supin-'+self.client
         self.s3 = boto3.client('s3')
