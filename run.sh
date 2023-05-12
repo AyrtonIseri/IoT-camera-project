@@ -9,7 +9,7 @@ set -e
 while true
 do
     # Loads new captures to the cloud and cleans the buffer
-    python photo-dumper.py 'nema' './photo-queue'
+    python photo-dumper.py 'nema' '/var/www/html/uploads/'
 
     # Logs information to the console
     local_time=$(date +%H:%M:%S)
