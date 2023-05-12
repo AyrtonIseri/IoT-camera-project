@@ -35,7 +35,6 @@ class Manager():
 
         for file in glob.glob(pathname=self.queue_path+'/*'):
             filename = os.path.basename(file)
-            print(filename)
             file_valid = self._validate_file(filename=filename)
 
             if not file_valid:
