@@ -17,10 +17,14 @@ class Manager():
 
     def process_queue(self):
         self._list_files()
-        
+
         for file in self.queue:
             self.connector.load_picture(file, self.client)
-        
+
+            #logging to console
+            filename = os.path.basename(file)
+            print(f'Successfully loaded {filename} to remote storage')
+
         self._clean_buffer()
 
     def _get_connector(self):
@@ -39,7 +43,7 @@ class Manager():
                     f"""Filename must be formatted according to predetermined convention. 
                     Expected {self.pattern} but got {filename}"""
                 )
-            
+
             self.queue.append(file)
 
     def _validate_file(self, filename: str) -> bool:
@@ -56,6 +60,7 @@ class Manager():
 
     def _clean_buffer(self):
         for file in glob.glob(pathname=self.queue_path+'/*'):
+            self._assure_file_in_driver(file)
             os.remove(file)
 
     def _assure_file_in_driver(self, filename: str):
