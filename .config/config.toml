@@ -4,3 +4,6 @@ title = "Camera Configuration File"
 user = []
 key = []
 folder_id = "1KLnO_x9gcuq-RVfSq2VyuD8_h6INRCmT"
+
+[Queue]
+filename_pattern = "^capture-[a-zA-Z]+-[0-9]+-[0-9]+-[0-9]+-[0-9]+.[a-zA-Z]+$"
